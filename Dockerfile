@@ -45,8 +45,7 @@ RUN \
     echo "docker ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/docker && \
 
     # Sets up toolchains
-    gosu docker bash -c 'cd ~ && git clone https://github.com/SWRT-dev/mtk-toolchains'
-    gosu docker bash -c 'cd ~ && git clone https://github.com/SWRT-dev/qca-toolchains'
+    gosu docker bash -c 'cd ~ && git clone https://github.com/SWRT-dev/mtk-toolchains && git clone https://github.com/SWRT-dev/qca-toolchains'
 
 
 COPY envs /home/docker/envs
