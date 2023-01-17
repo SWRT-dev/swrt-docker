@@ -16,7 +16,7 @@ RUN \
     apt-get update && \
     apt-get -y --no-install-recommends \
       install build-essential asciidoc dos2unix libtool-bin cmake libproxy-dev   \
-      uuid-dev liblzo2-dev autoconf automake bash bison bzip2 diffutils  \
+      uuid-dev liblzo2-dev autoconf automake bison bzip2 diffutils  \
       file flex m4 g++ gawk groff-base libncurses5-dev libtool libslang2 \
       make patch perl pkg-config shtool subversion tar texinfo zlib1g    \
       zlib1g-dev git gettext libexpat1-dev libssl-dev cvs gperf unzip    \
@@ -37,8 +37,7 @@ RUN \
     rm -Rf /var/cache/apt/archives/* && \
 
     # Set bash as default shell
-    #ln -s bash /bin/sh.bash && \
-    #mv /bin/sh.bash /bin/sh && \
+    #ln -s /bin/bash /bin/sh && \
 
     # Set "docker" as root password
     echo "root:docker" | chpasswd && \
@@ -56,11 +55,11 @@ COPY envs /home/docker/envs
 RUN chown docker /home/docker/envs/* && \
     chmod 755    /home/docker/envs/*
 
-RUN echo '[ ! -z "$TERM" -a -r /etc/motd ] && cat /etc/motd' \
-    >> /etc/bash.bashrc \
-    ; echo "This Docker image would allow you to build SWRT firmware." > /etc/motd \
-    ; echo "To initialize correctly the env, please run" >> /etc/motd \
-    ; echo " 'source /home/docker/envs/[toolchain.sh]'" >> /etc/motd
+#RUN echo '[ ! -z "$TERM" -a -r /etc/motd ] && cat /etc/motd' \
+#    >> /etc/bash.bashrc \
+#    ; echo "This Docker image would allow you to build SWRT firmware." > /etc/motd \
+#    ; echo "To initialize correctly the env, please run" >> /etc/motd \
+#    ; echo " 'source /home/docker/envs/toolchain.sh'" >> /etc/motd
 
 # Set docker as default
 USER docker:docker
