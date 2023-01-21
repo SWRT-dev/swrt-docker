@@ -37,7 +37,7 @@ RUN \
     rm -Rf /var/cache/apt/archives/* && \
 
     # Set bash as default shell
-    ln -s /bin/bash /bin/sh && \
+    sudo ln -s /bin/bash /bin/sh && \
 
     # Set "docker" as root password
     echo "root:docker" | chpasswd && \
