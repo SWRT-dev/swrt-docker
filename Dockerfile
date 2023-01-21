@@ -48,7 +48,7 @@ RUN \
     echo "docker ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/docker && \
 
     # Sets up toolchains
-    gosu docker bash -c 'cd ~ && git clone https://github.com/SWRT-dev/mtk-toolchains && git clone https://github.com/SWRT-dev/qca-toolchains'
+    gosu docker bash -c 'cd ~ && git clone https://github.com/SWRT-dev/mtk-toolchains && git clone https://github.com/SWRT-dev/qca-toolchains && git clone https://github.com/SWRT-dev/bcmhnd-toolchains && git clone https://github.com/SWRT-dev/bcm-toolchains'
 
 
 COPY envs /home/docker/envs
@@ -59,7 +59,8 @@ RUN echo '[ ! -z "$TERM" -a -r /etc/motd ] && cat /etc/motd' \
     >> /etc/bash.bashrc \
     ; echo "This Docker image would allow you to build SWRT firmware." > /etc/motd \
     ; echo "To initialize correctly the env, please run" >> /etc/motd \
-    ; echo " 'source /home/docker/envs/toolchain.sh'" >> /etc/motd
+    ; echo " 'source /home/docker/envs/toolchain.sh'" >> /etc/motd \
+    ; echo " 'source /home/docker/envs/bcm.sh'" >> /etc/motd
 
 # Set docker as default
 USER docker:docker
