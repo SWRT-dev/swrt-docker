@@ -18,4 +18,4 @@ mkdir -p /projects/bca/tools/linux/
 mkdir -p /projects/bca/tools/linux/bin/
 ln -sf ~/bcm-toolchains/hndtools-armeabi-2013.11 /projects/bca/tools/linux/
 ln -sf ~/bcm-toolchains/fwtag.ini /projects/bca/tools/linux/bin/
-ln -sf /projects/bca/ /projects/hnd/
+ln -sf /projects/bca /projects/hnd
