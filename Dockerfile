@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:focal
 LABEL maintainer="paldier <paldier@hotmail.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -20,7 +20,7 @@ RUN \
       file flex m4 g++ gawk groff-base libncurses5-dev libtool libslang2 \
       make patch perl pkg-config shtool subversion tar texinfo zlib1g    \
       zlib1g-dev git gettext libexpat1-dev libssl-dev cvs gperf unzip    \
-      python2.7 libxml-parser-perl gcc-multilib libxml2-dev g++-multilib   \
+      python2 libxml-parser-perl gcc-multilib libxml2-dev g++-multilib   \
       gitk libncurses5 mtd-utils libvorbis-dev autopoint autogen sed     \
       intltool libglib2.0-dev xutils-dev                 \
       lib32z1-dev lib32stdc++6 xsltproc gtk-doc-tools libelf-dev:i386    \
