@@ -29,7 +29,7 @@ RUN \
       lib32gcc1 libc6-dev-i386 uglifyjs git-core p7zip p7zip-full msmtp \
       xmlto qemu-utils upx device-tree-compiler antlr3 wget lib32z1  \
       binutils-dev lzma liblzma-dev lzma-dev libstdc++5 docbook-xsl-*   \
-      sharutils gengetopt && \
+      sharutils gengetopt autoconf-archive && \
 
     # Clean up env
     apt -y autoremove && \
