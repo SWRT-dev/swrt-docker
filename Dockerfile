@@ -20,7 +20,7 @@ RUN \
       file flex m4 g++ gawk groff-base libncurses5-dev libtool libslang2 \
       make patch perl pkg-config shtool subversion tar texinfo zlib1g    \
       zlib1g-dev git gettext libexpat1-dev libssl-dev cvs gperf unzip    \
-      python2 libxml-parser-perl gcc-multilib libxml2-dev g++-multilib   \
+      python2.7 libxml-parser-perl gcc-multilib libxml2-dev g++-multilib   \
       gitk libncurses5 mtd-utils libvorbis-dev autopoint autogen sed     \
       intltool libglib2.0-dev xutils-dev                 \
       lib32z1-dev lib32stdc++6 xsltproc gtk-doc-tools libelf-dev:i386    \
@@ -48,7 +48,7 @@ RUN \
     echo "docker ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/docker && \
 
     # Sets up toolchains
-    gosu docker bash -c 'cd ~ && git clone https://github.com/SWRT-dev/mtk-toolchains && git clone https://github.com/SWRT-dev/qca-toolchains && git clone https://github.com/SWRT-dev/bcmhnd-toolchains && git clone https://github.com/SWRT-dev/bcm-toolchains'
+    gosu docker bash -c 'cd /home/docker && git clone https://github.com/SWRT-dev/mtk-toolchains && git clone https://github.com/SWRT-dev/qca-toolchains && git clone https://github.com/SWRT-dev/bcmhnd-toolchains && git clone https://github.com/SWRT-dev/bcm-toolchains'
 
 
 COPY envs /home/docker/envs
