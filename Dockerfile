@@ -25,7 +25,7 @@ RUN \
       intltool libglib2.0-dev xutils-dev                 \
       lib32z1-dev lib32stdc++6 xsltproc gtk-doc-tools libelf-dev:i386    \
       libelf1:i386 libltdl-dev openssh-server curl nano lzip patchelf    \
-      automake gosu bc rsync sudo xxd binutils libz-dev patch python3.5 \
+      gosu bc rsync sudo xxd binutils libz-dev patch python3.5 \
       lib32gcc1 libc6-dev-i386 uglifyjs git-core p7zip p7zip-full msmtp \
       xmlto qemu-utils upx device-tree-compiler antlr3 wget lib32z1  \
       binutils-dev lzma liblzma-dev lzma-dev libstdc++5 docbook-xsl-*   \
@@ -39,6 +39,9 @@ RUN \
     # Set bash as default shell
     sudo ln -sf /bin/bash /bin/sh && \
 
+    sudo mkdir -p /usr/local/share/aclocal/ && \
+    sudo cp /usr/share/aclocal/*.m4 /usr/local/share/aclocal/ && \
+
     # Set "docker" as root password
     echo "root:docker" | chpasswd && \
 
@@ -48,7 +51,7 @@ RUN \
     echo "docker ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/docker && \
 
     # Sets up toolchains
-    gosu docker bash -c 'cd /home/docker && git clone https://github.com/SWRT-dev/mtk-toolchains && git clone https://github.com/SWRT-dev/qca-toolchains && git clone https://github.com/SWRT-dev/bcmhnd-toolchains && git clone https://github.com/SWRT-dev/bcm-toolchains'
+    gosu docker bash -c 'cd /home/docker && git clone --depth=1 https://github.com/SWRT-dev/mtk-toolchains && git clone --depth=1 https://github.com/SWRT-dev/qca-toolchains && git clone --depth=1 https://github.com/SWRT-dev/bcmhnd-toolchains && git clone --depth=1 https://github.com/SWRT-dev/bcm-toolchains'
 
 
 COPY envs /home/docker/envs
