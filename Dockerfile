@@ -1,5 +1,9 @@
-FROM ubuntu:focal
+FROM ubuntu:22.04
 LABEL maintainer="paldier <paldier@hotmail.com>"
+
+# 使用国内APT镜像源
+ARG CHINESE_APT_MIRRORS=1
+RUN [ $CHINESE_APT_MIRRORS -eq 1 ] && sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list || true
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TOOLCHAIN_BASE /opt/toolchains
@@ -12,9 +16,8 @@ WORKDIR /build
 RUN \
     # Install latest packages
     apt-get -y dist-upgrade && \
-    dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get -y --no-install-recommends \
+    apt-get -y \
       install build-essential asciidoc dos2unix libtool-bin cmake libproxy-dev   \
       uuid-dev liblzo2-dev autoconf automake bash bison bzip2 diffutils  \
       file flex m4 g++ gawk groff-base libncurses5-dev libtool libslang2 \
@@ -53,6 +56,7 @@ RUN \
     # Sets up toolchains
     gosu docker bash -c 'cd /home/docker && git clone --depth=1 https://github.com/SWRT-dev/mtk-toolchains && git clone --depth=1 https://github.com/SWRT-dev/qca-toolchains && git clone --depth=1 https://github.com/SWRT-dev/bcmhnd-toolchains && git clone --depth=1 https://github.com/SWRT-dev/bcm-toolchains'
 
+RUN [ $CHINESE_APT_MIRRORS -eq 1 ] && sed -i s@/mirrors.aliyun.com/@/archive.ubuntu.com/@g /etc/apt/sources.list || true
 
 COPY envs /home/docker/envs
 RUN chown docker /home/docker/envs/* && \
