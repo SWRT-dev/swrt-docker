@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 LABEL maintainer="paldier <paldier@hotmail.com>"
 
 # 使用国内APT镜像源
