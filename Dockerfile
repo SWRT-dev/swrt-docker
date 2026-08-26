@@ -20,11 +20,11 @@ RUN \
     apt-get -y \
       install build-essential asciidoc dos2unix libtool-bin cmake libproxy-dev   \
       uuid-dev liblzo2-dev autoconf automake bash bison bzip2 diffutils  \
-      file flex m4 g++ gawk groff-base libncurses5-dev libtool libslang2 \
+      file flex m4 g++ gawk groff-base libncurses-dev libtool libslang2 \
       make patch perl pkg-config shtool subversion tar texinfo zlib1g    \
       zlib1g-dev git gettext libexpat1-dev libssl-dev cvs gperf unzip    \
-      python2 libxml-parser-perl gcc-multilib libxml2-dev g++-multilib   \
-      gitk libncurses5 mtd-utils libvorbis-dev autopoint autogen sed     \
+      python-is-python3 libxml-parser-perl gcc-multilib libxml2-dev g++-multilib   \
+      gitk libncurses6 mtd-utils libvorbis-dev autopoint autogen sed     \
       intltool libglib2.0-dev xutils-dev                 \
       lib32z1-dev lib32stdc++6 xsltproc gtk-doc-tools libelf-dev    \
       libelf1 libltdl-dev openssh-server curl nano lzip patchelf    \
@@ -32,7 +32,7 @@ RUN \
       lib32gcc-s1 libc6-dev-i386 uglifyjs git-core p7zip p7zip-full msmtp \
       xmlto qemu-utils upx device-tree-compiler antlr3 wget lib32z1  \
       binutils-dev lzma liblzma-dev lzma-dev libstdc++5 docbook-xsl-*   \
-      sharutils gengetopt autoconf-archive libsysfs-dev zip && \
+      sharutils gengetopt autoconf-archive libsysfs-dev zip python3-setuptools && \
 
     # Clean up env
     apt -y autoremove && \
