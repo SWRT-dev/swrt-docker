@@ -3,7 +3,7 @@ LABEL maintainer="paldier <paldier@hotmail.com>"
 
 # 使用国内APT镜像源
 ARG CHINESE_APT_MIRRORS=1
-RUN [ $CHINESE_APT_MIRRORS -eq 1 ] && sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list || true
+RUN [ $CHINESE_APT_MIRRORS -eq 1 ] && sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list.d/ubuntu.sources || true
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TOOLCHAIN_BASE /opt/toolchains
@@ -56,7 +56,7 @@ RUN \
     # Sets up toolchains
     gosu docker bash -c 'cd /home/docker && git clone --depth=1 https://github.com/SWRT-dev/mtk-toolchains && git clone --depth=1 https://github.com/SWRT-dev/qca-toolchains'
 
-RUN [ $CHINESE_APT_MIRRORS -eq 1 ] && sed -i s@/mirrors.aliyun.com/@/archive.ubuntu.com/@g /etc/apt/sources.list || true
+RUN [ $CHINESE_APT_MIRRORS -eq 1 ] && sed -i s@/mirrors.aliyun.com/@/archive.ubuntu.com/@g /etc/apt/sources.list.d/ubuntu.sources || true
 
 COPY envs /home/docker/envs
 RUN chown docker /home/docker/envs/* && \
